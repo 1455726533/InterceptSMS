@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context="com.example.interceptsms.MainActivity">
+
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启"/>
+
+    <Button
+        android:id="@+id/kill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="结束"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/boot_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启开机自启动"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/boot_kill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消开机自启动"
+        android:layout_marginTop="10dp"/>
+
+
+</LinearLayout>
