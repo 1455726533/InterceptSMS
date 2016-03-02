@@ -28,11 +28,18 @@ public class MyService extends Service{
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.e("service--->>>", "onCreate");
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         IntentFilter filter=new IntentFilter();
         filter.addAction("android.provider.Telephony.SMS_RECEIVED");
         clipMessage=new ClipMessage();
         registerReceiver(clipMessage,filter);
+        Log.e("service--->>>", "onStartCommand");
         return super.onStartCommand(intent, flags, startId);
 
     }
@@ -41,6 +48,7 @@ public class MyService extends Service{
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(clipMessage);
+        Log.e("service--->>>","onDestroy");
     }
 
     /**

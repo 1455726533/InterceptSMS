@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences.Editor editor;
     Intent intent;
+    boolean isWorkOn;
     @Bind(R.id.start)
     Button start;
     @Bind(R.id.kill)
@@ -34,18 +35,20 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         editor= getSharedPreferences("ClientInfo",MODE_PRIVATE).edit();
         intent = new Intent(Intent.ACTION_RUN);
-        intent.setClass(MainActivity.this, MyService.class);
+        intent.setClass(MyApplication.context, MyService.class);
     }
 
     @OnClick(R.id.start)
     void start(){
-        this.startService(intent);
+        MyApplication.context.startService(intent);
+        isWorkOn=true;
         Toast.makeText(MainActivity.this, "启动成功", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.kill)
     void kill(){
-        this.stopService(intent);
+        MyApplication.context.stopService(intent);
+        isWorkOn=false;
         Toast.makeText(MainActivity.this, "已取消复制", Toast.LENGTH_SHORT).show();
     }
 
@@ -60,5 +63,10 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("isBootStart",false);
         editor.commit();
         Toast.makeText(MainActivity.this, "已取消开机自启动", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
